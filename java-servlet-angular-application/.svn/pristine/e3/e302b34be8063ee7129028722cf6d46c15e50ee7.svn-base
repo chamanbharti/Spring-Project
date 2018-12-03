@@ -1,0 +1,38 @@
+package com.servlet.angular.service;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class UserConnection {
+	
+	private static final UserConnection userConnection=new UserConnection();
+	
+	private UserConnection() {}
+	
+	public static UserConnection getInstance(){
+		return userConnection;
+	}
+	
+	public Connection getConnection(){
+		
+		System.out.println("-------- MySQL JDBC Connection Testing ------------");
+		Connection connection = null;
+		
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/angularjs","chaman_bharti", "chaman1234");
+			
+			if (connection != null) {
+				System.out.println("You made it, take control your database now!");
+			} else {
+				System.out.println("Failed to make connection!");
+			}
+		} catch (Exception e) {
+			System.out.println("Where is your MySQL JDBC Driver?");
+			e.printStackTrace();
+		}
+
+		return connection;
+	}
+}

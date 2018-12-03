@@ -1,0 +1,15 @@
+angular.module("myApp", [])
+	   .constant("hostURL", "http://localhost:8084/java-servlet-angular-application/")
+       .factory("UserService", function($http,$q) {
+       	
+    	   var factory={
+    			fetchAllUsers: fetchAllUsers,
+    		    createUser: createUser,
+    		    updateUser:updateUser,
+    		    deleteUser:deleteUser
+    	   };
+    	   
+    	   return factory;
+    	   
+    	   
+       });

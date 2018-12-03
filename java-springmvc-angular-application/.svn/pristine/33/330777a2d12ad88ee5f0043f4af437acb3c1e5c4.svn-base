@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.spring.angular</groupId>
+  <artifactId>java-springmvc-angular-application</artifactId>
+  <version>1.0</version>
+  <packaging>war</packaging>
+  <name>java-springmvc-angular-application</name>
+  <description>This application is based on SpringMVC, AngularJS and JDBC technology.</description>
+  
+    <properties>
+		<java-version>1.8</java-version>
+		<org.springframework-version>4.0.3.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.7.4</org.aspectj-version>
+		<org.slf4j-version>1.7.5</org.slf4j-version>
+	</properties>
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${org.aspectj-version}</version>
+		</dependency>	
+		
+		<!-- servlet api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+				
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>5.1.39</version>
+		</dependency>
+				
+	</dependencies>
+    <build>
+    
+        <plugins>
+            <!-- http://www.eclipse.org/jetty/documentation/current/jetty-maven-plugin.html -->
+	  		<plugin>
+	  			<groupId>org.eclipse.jetty</groupId>
+	  			<artifactId>jetty-maven-plugin</artifactId>
+	  			<version>9.3.11.v20160721</version>
+	  			<configuration>
+	  				<scanIntervalSeconds>10</scanIntervalSeconds>
+	  				<webApp>
+	  					<compactPath>/java-springmvc-angular-application</compactPath>
+	  				</webApp>
+	  				<connectors>
+	  					<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+	  						<port>8084</port>
+	  					</connector>
+	  				</connectors>
+	  			</configuration>  
+	  		</plugin> 
+        </plugins>
+        
+    </build>
+</project>

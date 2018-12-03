@@ -1,0 +1,66 @@
+package com.spring.angular.dao;
+
+import java.sql.PreparedStatement;
+import java.util.List;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.spring.angular.model.User;
+
+public class UserDAOImpl implements UserDAO{
+	
+    private JdbcTemplate jdbcTemplate;
+    
+	@Override
+	public int createUser(User user) {
+
+		int savedUser=0;
+		PreparedStatement ps=null;
+		long savedUserId=0;
+		long newUserId=0;
+		try{
+			 String sql = "SELECT max(ID) FROM USER";
+			 int total = getJdbcTemplate().getMaxRows();
+			 while (total > 0) {
+					savedUserId=total;
+					newUserId=savedUserId+1;
+				}
+			 String sql2 = "INSERT INTO USER(ID,USERNAME,ADDRESS,EMAIL) VALUES('"+user.getId()+","+user.getUsername()+","+user.getEmail()+","+user.getAddress()+"')";
+			 
+			 
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public List<User> fetchAllUsers() {
+		String SQL="SELECT * FROM USER";
+		List<User> users=jdbcTemplate.query(SQL, new UserRowMapper());
+		
+		return users;
+	}
+
+	@Override
+	public int updateUser(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteUser(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
+	}
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+
+}

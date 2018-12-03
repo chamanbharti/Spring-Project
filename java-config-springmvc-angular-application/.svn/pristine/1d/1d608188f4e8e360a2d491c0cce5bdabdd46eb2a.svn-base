@@ -1,0 +1,9 @@
+com\spring\angular\dao\UserDAOImpl.class
+com\spring\angular\model\User.class
+com\spring\angular\service\UserService.class
+com\spring\angular\config\WebContainerInitializer.class
+com\spring\angular\config\WebConfiguration.class
+com\spring\angular\service\UserServiceImpl.class
+com\spring\angular\dao\UserDAO.class
+com\spring\angular\dao\UserRowMapper.class
+com\spring\angular\controller\UserController.class
